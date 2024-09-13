@@ -5,6 +5,9 @@ return {
     vim.cmd.colorscheme 'monokai-pro'
   end,
   config = function()
-    require('monokai-pro').setup {}
+    require('monokai-pro').setup {
+      devicons = true,
+      background_clear = {},
+    }
   end,
 }

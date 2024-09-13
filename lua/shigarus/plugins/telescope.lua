@@ -55,6 +55,12 @@ return {
       --   },
       -- },
       -- pickers = {}
+      defaults = {
+        borderchars = { '█', ' ', '▀', '█', '█', ' ', ' ', '▀' },
+        wrap_results = true,
+        path_display = { 'smart' },
+        dynamic_preview_title = true,
+      },
       extensions = {
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),
@@ -101,5 +107,12 @@ return {
     vim.keymap.set('n', '<leader>sn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, { desc = '[S]earch [N]eovim files' })
+
+    -- RECOLORING
+    -- this is alternative to a vim.cmd('hi TelescopePreviewDirectory guifg=#ffffff gui=bold')
+    -- vim.api.nvim_set_hl(0, 'TelescopePreviewDirectory', {
+    --   fg = '#b4d273',
+    --   bold = true,
+    -- })
   end,
 }
