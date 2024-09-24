@@ -20,6 +20,13 @@ return {
     },
     { 'nvim-telescope/telescope-ui-select.nvim' },
 
+    {
+      'nvim-telescope/telescope-live-grep-args.nvim',
+      -- This will not install any breaking changes.
+      -- For major updates, this must be adjusted manually.
+      version = '^1.0.0',
+    },
+
     -- Useful for getting pretty icons, but requires a Nerd Font.
     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
   },
@@ -45,7 +52,8 @@ return {
 
     -- [[ Configure Telescope ]]
     -- See `:help telescope` and `:help telescope.setup()`
-    require('telescope').setup {
+    local telescope = require 'telescope'
+    telescope.setup {
       -- You can put your default mappings / updates / etc. in here
       --  All the info you're looking for is in `:help telescope.setup()`
       --
@@ -60,6 +68,36 @@ return {
         wrap_results = true,
         path_display = { 'smart' },
         dynamic_preview_title = true,
+        mappings = {
+          n = {
+            ['<C-r>'] = {
+              function(p_bufnr)
+                -- send results to quick fix list
+                require('telescope.actions').send_to_qflist(p_bufnr)
+                local qflist = vim.fn.getqflist()
+                local paths = {}
+                local hash = {}
+                for k in pairs(qflist) do
+                  local path = vim.fn.bufname(qflist[k]['bufnr']) -- extract path from quick fix list
+                  if not hash[path] then -- add to paths table, if not already appeared
+                    paths[#paths + 1] = path
+                    hash[path] = true -- remember existing paths
+                  end
+                end
+                -- show search scope with message
+                -- vim.notify('find in ...\n  ' .. gable.concat(paths, '\n  '))
+                -- execute live_grep_args with search scope
+                require('telescope').extensions.live_grep_args.live_grep_args { search_dirs = paths }
+              end,
+              type = 'action',
+              opts = {
+                nowait = true,
+                silent = true,
+                desc = 'Live grep on results',
+              },
+            },
+          },
+        },
       },
       extensions = {
         ['ui-select'] = {
@@ -69,8 +107,9 @@ return {
     }
 
     -- Enable Telescope extensions if they are installed
-    pcall(require('telescope').load_extension, 'fzf')
-    pcall(require('telescope').load_extension, 'ui-select')
+    pcall(telescope.load_extension, 'fzf')
+    pcall(telescope.load_extension, 'ui-select')
+    pcall(telescope.load_extension, 'live_grep_args')
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
@@ -79,7 +118,9 @@ return {
     vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
     vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
     vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-    vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+    vim.keymap.set('n', '<leader>sg', function()
+      telescope.extensions.live_grep_args.live_grep_args()
+    end, { desc = '[S]earch by [G]rep' })
     vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
     vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
     vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
