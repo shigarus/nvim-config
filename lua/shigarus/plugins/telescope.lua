@@ -66,7 +66,7 @@ return {
       defaults = {
         borderchars = { '█', ' ', '▀', '█', '█', ' ', ' ', '▀' },
         wrap_results = true,
-        path_display = { 'smart' },
+        path_display = { 'shorten' },
         dynamic_preview_title = true,
         mappings = {
           n = {
