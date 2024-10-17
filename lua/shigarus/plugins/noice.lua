@@ -43,6 +43,30 @@ return {
           filter = {
             event = 'msg_show',
             kind = '',
+            find = 'before #',
+          },
+          opts = { skip = true },
+        },
+        {
+          filter = {
+            event = 'msg_show',
+            kind = '',
+            find = 'match',
+          },
+          opts = { skip = true },
+        },
+        {
+          filter = {
+            event = 'msg_show',
+            kind = '',
+            find = 'after #',
+          },
+          opts = { skip = true },
+        },
+        {
+          filter = {
+            event = 'msg_show',
+            kind = '',
             find = 'lines',
           },
           opts = { skip = true },
