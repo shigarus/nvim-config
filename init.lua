@@ -181,6 +181,20 @@ require('lazy').setup({
 })
 
 require('lspconfig').protols.setup {}
+local format_sync_grp = vim.api.nvim_create_augroup('GoFormat', {})
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*.go',
+  callback = function()
+    require('go.format').gofmt()
+  end,
+  group = format_sync_grp,
+})
+require('go').setup {
+  lsp_cfg = false,
+  -- other setups...
+}
+local cfg = require('go.lsp').config()
+require('lspconfig').gopls.setup(cfg)
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
