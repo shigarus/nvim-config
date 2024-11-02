@@ -1,9 +1,9 @@
 bat
-git
 git-lfs
 gimp
 git-credential-manager
 helm
+eza
 jfrog-cli
 jq
 jwt-cli
@@ -14,11 +14,15 @@ lazygit
 maven
 neovim
 starship
+stow
 terraform
+thefuck
 tilt
+tldr
 tmux
 tree-sitter
 yq
+zoxide
 
 clipy
 macfuse
