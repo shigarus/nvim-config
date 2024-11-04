@@ -191,6 +191,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 })
 require('go').setup {
   lsp_cfg = false,
+  lsp_keymaps = require 'shigarus.keymaps.lsp_attach',
   -- other setups...
 }
 local cfg = require('go.lsp').config()
