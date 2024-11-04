@@ -33,6 +33,8 @@ return function(buf)
   -- Fuzzy find all the symbols in your current workspace.
   --  Similar to document symbols, except searches over your entire project.
   map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+  map('<C-k>', vim.lsp.buf.signature_help, 'Signature help')
+  map('<space>ca', require('go.codeaction').run_code_action, '[C]ode [A]ction')
 
   -- Rename the variable under your cursor.
   --  Most Language Servers support renaming across files, etc.
