@@ -3,7 +3,7 @@ return {
   'neovim/nvim-lspconfig',
   dependencies = {
     -- Automatically install LSPs and related tools to stdpath for Neovim
-    { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
+    { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependencies
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
 
@@ -37,12 +37,12 @@ return {
     -- Thus, Language Servers are external tools that must be installed separately from
     -- Neovim. This is where `mason` and related plugins come into play.
     --
-    -- If you're wondering about lsp vs treesitter, you can check out the wonderfully
+    -- If you're wondering about lsp vs treesitter, you can checkout the wonderfully
     -- and elegantly composed help section, `:help lsp-vs-treesitter`
 
     --  This function gets run when an LSP attaches to a particular buffer.
     --    That is to say, every time a new file is opened that is associated with
-    --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
+    --    a lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
     --    function will be executed to configure the current buffer
     local on_attach = require 'shigarus.keymaps.lsp_attach'
     vim.api.nvim_create_autocmd('LspAttach', {
@@ -73,6 +73,16 @@ return {
       -- gopls = {},
       pyright = {},
       helm_ls = {},
+      harper_ls = {
+        settings = {
+          ['harper-ls'] = {
+            linters = {
+              sentence_capitalization = false,
+              avoid_curses = false,
+            },
+          },
+        },
+      },
       -- rust_analyzer = {},
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
       --
