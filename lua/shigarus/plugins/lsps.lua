@@ -77,6 +77,7 @@ return {
         settings = {
           ['harper-ls'] = {
             userDictPath = '~/.config/harper-ls/dictionary.txt',
+            fileDictPath = '~/.config/harper-ls',
             linters = {
               sentence_capitalization = false,
               avoid_curses = false,
