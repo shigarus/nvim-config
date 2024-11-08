@@ -71,6 +71,7 @@ return {
     local servers = {
       -- clangd = {},
       -- gopls = {},
+      bzl = {},
       pyright = {},
       helm_ls = {},
       harper_ls = {
