@@ -6,7 +6,21 @@ return {
     'nvim-treesitter/nvim-treesitter',
   },
   config = function()
-    require('go').setup()
+    local format_sync_grp = vim.api.nvim_create_augroup('GoFormat', {})
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      pattern = '*.go',
+      callback = function()
+        require('go.format').gofmt()
+      end,
+      group = format_sync_grp,
+    })
+    require('go').setup {
+      lsp_cfg = false,
+      lsp_keymaps = require 'shigarus.keymaps.lsp_attach',
+      -- other setups...
+    }
+    local cfg = require('go.lsp').config()
+    require('lspconfig').gopls.setup(cfg)
   end,
   event = { 'CmdlineEnter' },
   ft = { 'go', 'gomod' },
