@@ -182,5 +182,6 @@ require('lazy').setup({
 
 require('lspconfig').protols.setup {}
 
+vim.keymap.set({ 'n' }, '-', '<cmd>Oil<CR>')
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
