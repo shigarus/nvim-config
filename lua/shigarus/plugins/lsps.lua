@@ -71,9 +71,14 @@ return {
     local servers = {
       -- clangd = {},
       -- gopls = {},
+      clangd = {},
       bzl = {},
       pyright = {},
-      helm_ls = {},
+      helm_ls = {
+        yamlls = {
+          path = 'yaml-language-server',
+        },
+      },
       harper_ls = {
         settings = {
           ['harper-ls'] = {
