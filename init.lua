@@ -181,6 +181,7 @@ require('lazy').setup({
 })
 
 require('lspconfig').protols.setup {}
+require('lspconfig').fish_lsp.setup {}
 
 vim.keymap.set({ 'n' }, '-', '<cmd>Oil<CR>')
 -- The line beneath this is called `modeline`. See `:help modeline`
