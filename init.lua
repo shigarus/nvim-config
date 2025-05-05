@@ -79,9 +79,6 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
--- set text len
-vim.api.nvim_set_option_value('colorcolumn', '111', {})
-
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
