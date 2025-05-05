@@ -122,13 +122,10 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-vim.keymap.set({ 'n', 'v' }, 'd', '"_d', { noremap = true })
-vim.keymap.set({ 'n' }, 'D', '"_D', { noremap = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>d', '"_d', { noremap = true })
+vim.keymap.set({ 'n' }, '<leader>D', '"_D', { noremap = true })
 vim.keymap.set({ 'n', 'v' }, 'c', '"_c', { noremap = true })
 vim.keymap.set({ 'n' }, 'C', '"_C', { noremap = true })
-vim.keymap.set({ 'n' }, 'x', 'd', { noremap = true })
-vim.keymap.set({ 'n' }, 'xx', 'dd', { noremap = true })
-vim.keymap.set({ 'n' }, 'X', 'D', { noremap = true })
 vim.keymap.set({ 'v' }, 'p', '"_dP', { noremap = true })
 
 --  See `:help lua-guide-autocommands`
