@@ -21,7 +21,7 @@ return {
       normal = {
         a = { fg = colors.black, bg = colors.yellow, gui = 'bold' },
         b = { fg = colors.yellow, bg = colors.gray },
-        c = { fg = colors.white, bg = colors.black },
+        c = { fg = colors.yellow, bg = colors.black },
       },
       insert = { a = { fg = colors.black, bg = colors.green, gui = 'bold' } },
       visual = { a = { fg = colors.black, bg = colors.pink, gui = 'bold' } },
