@@ -1,5 +1,3 @@
-local a = 'sdafasd'
-print(a)
 return {
   'ibhagwan/fzf-lua',
   -- optional for icon support

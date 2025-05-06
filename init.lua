@@ -178,5 +178,9 @@ require('lspconfig').protols.setup {}
 require('lspconfig').fish_lsp.setup {}
 
 vim.keymap.set({ 'n' }, '-', '<cmd>Oil<CR>')
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+
+vim.defer_fn(function()
+  -- here are some settings that better to setup a bit after startup
+  -- but have no idea how to make them lazy without such hack
+  require('fzf-lua').register_ui_select()
+end, 2000)
