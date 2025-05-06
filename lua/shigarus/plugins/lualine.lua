@@ -12,7 +12,7 @@ return {
       green = '#A6CA7B',
 
       orange = '#EE9D70',
-      pink = '#A69BE8',
+      purple = '#A69BE8',
       red = '#EB6B88',
       yellow = '#F9D978',
     }
@@ -21,10 +21,10 @@ return {
       normal = {
         a = { fg = colors.black, bg = colors.yellow, gui = 'bold' },
         b = { fg = colors.yellow, bg = colors.gray },
-        c = { fg = colors.yellow, bg = colors.black },
+        c = { fg = colors.white, bg = colors.black },
       },
       insert = { a = { fg = colors.black, bg = colors.green, gui = 'bold' } },
-      visual = { a = { fg = colors.black, bg = colors.pink, gui = 'bold' } },
+      visual = { a = { fg = colors.black, bg = colors.purple, gui = 'bold' } },
       replace = { a = { fg = colors.black, bg = colors.red, gui = 'bold' } },
       inactive = {
         a = { fg = colors.black, bg = colors.yellow, gui = 'bold' },
