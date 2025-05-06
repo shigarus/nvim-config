@@ -8,10 +8,17 @@ return {
     'hide',
     oldfiles = {
       include_current_session = true,
+      cwd_only = true,
+      stat_file = true,
     },
     previewers = {
       builtin = {
         syntax_limit_b = 1024 * 100, -- 100KB
+      },
+    },
+    keymap = {
+      fzf = {
+        ['ctrl-q'] = 'select-all+accept',
       },
     },
   },
