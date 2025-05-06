@@ -6,6 +6,14 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   opts = {
     'hide',
+    oldfiles = {
+      include_current_session = true,
+    },
+    previewers = {
+      builtin = {
+        syntax_limit_b = 1024 * 100, -- 100KB
+      },
+    },
   },
   keys = {
     {
