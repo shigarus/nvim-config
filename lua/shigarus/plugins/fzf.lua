@@ -19,6 +19,11 @@ return {
         ['ctrl-q'] = 'select-all+accept',
       },
     },
+    grep = {
+      hidden = true,
+      follow = true,
+      no_ignore = true,
+    },
   },
   keys = {
     {
