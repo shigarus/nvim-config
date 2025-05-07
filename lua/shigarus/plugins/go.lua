@@ -20,6 +20,7 @@ return {
       -- other setups...
     }
     local cfg = require('go.lsp').config()
+    cfg.settings.gopls.usePlaceholders = false
     require('lspconfig').gopls.setup(cfg)
   end,
   event = { 'CmdlineEnter' },

@@ -184,3 +184,6 @@ vim.defer_fn(function()
   -- but have no idea how to make them lazy without such hack
   require('fzf-lua').register_ui_select()
 end, 2000)
+
+local log = require 'log'
+log('Started on ' .. os.date())
