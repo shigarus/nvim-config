@@ -26,98 +26,98 @@ return {
       function()
         require('fzf-lua').files { hidden = true, find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden' } }
       end,
-      '[S]earch [F]iles',
+      desc = '[S]earch [F]iles',
     },
     {
       '<leader>sg',
       function()
         require('fzf-lua').live_grep_glob()
       end,
-      '[S]earch [G]rep',
+      desc = '[S]earch [G]rep',
     },
     {
       '<leader>sr',
       function()
         require('fzf-lua').resume()
       end,
-      '[S]earch [R]esume',
+      desc = '[S]earch [R]esume',
     },
     {
       '<leader>s.',
       function()
         require('fzf-lua').oldfiles()
       end,
-      '[S]earch old files [.]',
+      desc = '[S]earch old files [.]',
     },
     {
       '<leader>/',
       function()
         require('fzf-lua').blines()
       end,
-      'Search current buffer [/]',
+      desc = 'Search current buffer [/]',
     },
     {
       '<leader><leader>',
       function()
         require('fzf-lua').buffers()
       end,
-      'Search old files [ ]',
+      desc = 'Search open buffers [ ]',
     },
     {
       '<leader>sd',
       function()
         require('fzf-lua').diagnostics_document()
       end,
-      '[S]earch [D]iagnostics in the document',
+      desc = '[S]earch [D]iagnostics in the document',
     },
     {
       '<leader>ss',
       function()
         require('fzf-lua').lsp_document_symbols()
       end,
-      '[S]earch lsp document [S]ymbols',
+      desc = '[S]earch lsp document [S]ymbols',
     },
     {
       '<leader>sw',
       function()
         require('fzf-lua').grep_cword()
       end,
-      '[S]earch [w]ord',
+      desc = '[S]earch [w]ord',
     },
     {
       '<leader>sW',
       function()
         require('fzf-lua').grep_cWORD()
       end,
-      '[S]earch [W]ORD',
+      desc = '[S]earch [W]ORD',
     },
     {
       '<leader>sc',
       function()
         require('fzf-lua').files { cwd = '~/.config' }
       end,
-      '[S]earch [C]onfig files',
+      desc = '[S]earch [C]onfig files',
     },
     {
       '<leader>sk',
       function()
         require('fzf-lua').keymaps()
       end,
-      '[S]earch [K]eymaps',
+      desc = '[S]earch [K]eymaps',
     },
     {
       '<leader>sh',
       function()
         require('fzf-lua').helptags()
       end,
-      '[S]earch [H]elp',
+      desc = '[S]earch [H]elp',
     },
     {
       '<leader>su',
       function()
         require('fzf-lua').builtin()
       end,
-      '[S]earch [U]niversal',
+      desc = '[S]earch [U]niversal',
     },
   },
 }
