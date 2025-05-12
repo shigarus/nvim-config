@@ -24,6 +24,9 @@ return {
       follow = true,
       no_ignore = true,
     },
+    lsp = {
+      includeDeclaration = false,
+    },
   },
   keys = {
     {
