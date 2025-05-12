@@ -176,6 +176,7 @@ require('lazy').setup({
 
 require('lspconfig').protols.setup {}
 require('lspconfig').fish_lsp.setup {}
+vim.diagnostic.config { virtual_lines = { current_line = true } }
 
 vim.keymap.set({ 'n' }, '-', '<cmd>Oil<CR>')
 

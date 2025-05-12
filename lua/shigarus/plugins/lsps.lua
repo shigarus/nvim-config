@@ -52,6 +52,15 @@ return {
       end,
     })
 
+    vim.api.nvim_create_autocmd('LspAttach', {
+      callback = function(ev)
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        if client:supports_method 'textDocument/completion' then
+          vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+        end
+      end,
+    })
+
     -- LSP servers and clients are able to communicate to each other what features they support.
     --  By default, Neovim doesn't support everything that is in the LSP specification.
     --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
