@@ -16,6 +16,7 @@ return {
     })
     require('go').setup {
       lsp_cfg = false,
+      -- this is probably not working bs, as I run this function as autocommand in lsp config
       lsp_keymaps = require 'shigarus.keymaps.lsp_attach',
       -- other setups...
     }
