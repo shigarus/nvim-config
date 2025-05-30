@@ -22,7 +22,8 @@ return {
     }
     local cfg = require('go.lsp').config()
     cfg.settings.gopls.usePlaceholders = false
-    require('lspconfig').gopls.setup(cfg)
+    vim.lsp.config.gopls = cfg
+    vim.lsp.enable 'gopls'
   end,
   event = { 'CmdlineEnter' },
   ft = { 'go', 'gomod' },
