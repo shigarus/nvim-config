@@ -5,6 +5,12 @@ return {
   -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
   ---@module 'render-markdown'
   ---@type render.md.UserConfig
-  opts = {},
+  opts = {
+    code = { style = 'language' },
+    completions = { blink = { enabled = true } },
+  },
+  config = function()
     --   require('render-markdown').setup
+    vim.cmd 'highlight RenderMarkdownCode guibg=none'
+  end,
 }
