@@ -10,7 +10,6 @@ return {
     completions = { blink = { enabled = true } },
   },
   config = function()
-    --   require('render-markdown').setup
     vim.cmd 'highlight RenderMarkdownCode guibg=none'
   end,
 }
