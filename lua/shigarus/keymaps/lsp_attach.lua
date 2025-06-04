@@ -7,19 +7,27 @@ return function(buf)
   -- Jump to the definition of the word under your cursor.
   --  This is where a variable was first declared, or where a function is defined, etc.
   --  To jump back, press <C-t>.
-  map('gd', require('fzf-lua').lsp_definitions, '[G]oto [D]efinition')
+  map('gd', function()
+    require('fzf-lua').lsp_definitions()
+  end, '[G]oto [D]efinition')
 
   -- Find references for the word under your cursor.
-  map('gr', require('fzf-lua').lsp_references, '[G]oto [R]eferences')
+  map('gr', function()
+    require('fzf-lua').lsp_references()
+  end, '[G]oto [R]eferences')
 
   -- Jump to the implementation of the word under your cursor.
   --  Useful when your language has ways of declaring types without an actual implementation.
-  map('gI', require('fzf-lua').lsp_implementations, '[G]oto [I]mplementation')
+  map('gI', function()
+    require('fzf-lua').lsp_implementations()
+  end, '[G]oto [I]mplementation')
 
   -- Jump to the type of the word under your cursor.
   --  Useful when you're not sure what type a variable is and you want to see
   --  the definition of its *type*, not where it was *defined*.
-  map('<leader>D', require('fzf-lua').lsp_typedefs, 'Type [D]efinition')
+  map('<leader>D', function()
+    require('fzf-lua').lsp_typedefs()
+  end, 'Type [D]efinition')
 
   map('<C-k>', vim.lsp.buf.signature_help, 'Signature help')
 
