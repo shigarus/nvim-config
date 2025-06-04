@@ -9,6 +9,7 @@ return {
     code = { style = 'language' },
     completions = { blink = { enabled = true } },
   },
+  event = { 'BufEnter *.md' },
   config = function()
     vim.cmd 'highlight RenderMarkdownCode guibg=none'
   end,
