@@ -12,6 +12,44 @@ return {
     --   If not available, we use `mini` as the fallback
     'rcarriga/nvim-notify',
   },
+  keys = {
+
+    {
+      '<leader>nh',
+      function()
+        require('noice').cmd 'history'
+      end,
+      desc = '[N]oice [h]istory',
+    },
+    {
+      '<leader>nl',
+      function()
+        require('noice').cmd 'last'
+      end,
+      desc = '[N]oice [l]ast',
+    },
+    {
+      '<leader>nd',
+      function()
+        require('noice').cmd 'dismiss'
+      end,
+      desc = '[N]oice [d]ismiss',
+    },
+    {
+      '<leader>ne',
+      function()
+        require('noice').cmd 'errors'
+      end,
+      desc = '[N]oice [e]rrors',
+    },
+    {
+      '<leader>ns',
+      function()
+        require('noice').cmd 'stats'
+      end,
+      desc = '[N]oice [s]tats',
+    },
+  },
   config = function()
     require('noice').setup {
       lsp = {

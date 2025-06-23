@@ -34,11 +34,11 @@ return function(buf)
   -- Rename the variable under your cursor.
   --  Most Language Servers support renaming across files, etc.
   map('<leader>rn', function()
-    if vim.bo.filetype == 'go' then
-      require('go.rename').lsprename()
-    else
-      vim.lsp.buf.rename()
-    end
+    -- if vim.bo.filetype == 'go' then
+    --   require('go.rename').lsprename()
+    -- else
+    vim.lsp.buf.rename()
+    -- end
   end, '[R]e[n]ame')
 
   -- Execute a code action, usually your cursor needs to be on top of an error
