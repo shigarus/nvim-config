@@ -20,7 +20,25 @@ return {
     indent = { enabled = true },
     input = { enabled = true },
     -- conflicts with noice
-    -- notifier = { enabled = true },
+    notifier = {
+      enabled = true,
+      filter = function(notif)
+        local to_filter = { 'lines' }
+        for _, l in pairs(to_filter) do
+          if notif.msg:find(l) then
+            return false
+          end
+        end
+        return true
+        -- that is old filter
+        --       find = 'written',
+        --       find = 'before #',
+        --       find = 'match',
+        --       find = 'after #',
+        --       find = 'lines',
+        --       find = 'Already at newest change',
+      end,
+    },
     quickfile = { enabled = true },
     -- scope = { enabled = true },
     -- scroll = { enabled = true },
