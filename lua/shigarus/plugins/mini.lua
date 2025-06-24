@@ -24,6 +24,8 @@ return { -- Collection of various small independent plugins/modules
         replace = 'gsr', -- Replace surrounding
       },
     }
+    -- conflicts with leap plugin
+    vim.keymap.del('n', 'sn')
 
     -- double brackets etc.
     require('mini.pairs').setup()
