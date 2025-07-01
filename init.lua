@@ -193,4 +193,11 @@ if vim.env.IS_NOTES == 'true' then
   vim.opt.laststatus = 0
   vim.opt.number = false
   vim.opt.relativenumber = false
+  vim.cmd [[
+    highlight Normal guibg=none
+    highlight NonText guibg=none
+    highlight Normal ctermbg=none
+    highlight NonText ctermbg=none
+  ]]
+  vim.opt.signcolumn = 'no'
 end
