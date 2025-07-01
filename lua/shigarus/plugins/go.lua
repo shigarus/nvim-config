@@ -5,6 +5,7 @@ return {
     'neovim/nvim-lspconfig',
     'nvim-treesitter/nvim-treesitter',
   },
+  enabled = vim.env.IS_NOTES == nil,
   config = function()
     local format_sync_grp = vim.api.nvim_create_augroup('GoFormat', {})
     vim.api.nvim_create_autocmd('BufWritePre', {

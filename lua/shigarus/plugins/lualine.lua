@@ -2,6 +2,7 @@
 -- custom_monokai.normal.c.bg = '#272822'
 return {
   'nvim-lualine/lualine.nvim',
+  enabled = vim.env.IS_NOTES == nil,
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     local lualine = require 'lualine'
