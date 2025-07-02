@@ -109,6 +109,20 @@ return {
       -- tsserver = {},
       --
 
+      bashls = {
+        settings = {
+          bashIde = {
+            shfmt = {
+              simplifyCode = true,
+              binaryNextLine = true,
+              languageDialect = 'auto',
+              spaceRedirects = true,
+              caseIndent = true,
+              indentSize = 2,
+            },
+          },
+        },
+      },
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},
@@ -135,7 +149,7 @@ return {
 
     -- You can add other tools here that you want Mason to install
     -- for you, so that they are available from within Neovim.
-    local ensure_installed = vim.tbl_keys(servers or {})
+    local ensure_installed = vim.tbl_keys(servers or { 'bzl', 'pyright', 'helm_ls', 'lua_ls' })
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format Lua code
     })
