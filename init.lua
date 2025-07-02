@@ -180,6 +180,7 @@ vim.diagnostic.config { virtual_lines = { current_line = true } }
 
 vim.keymap.set({ 'n' }, '-', '<cmd>Oil<CR>')
 require 'shigarus.keymaps.markdown'()
+require 'shigarus.keymaps.life_quality'()
 
 vim.defer_fn(function()
   -- here are some settings that better to setup a bit after startup
