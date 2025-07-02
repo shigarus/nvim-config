@@ -179,6 +179,7 @@ require('lspconfig').fish_lsp.setup {}
 vim.diagnostic.config { virtual_lines = { current_line = true } }
 
 vim.keymap.set({ 'n' }, '-', '<cmd>Oil<CR>')
+require 'shigarus.keymaps.markdown'()
 
 vim.defer_fn(function()
   -- here are some settings that better to setup a bit after startup
@@ -200,4 +201,5 @@ if vim.env.IS_NOTES == 'true' then
     highlight NonText ctermbg=none
   ]]
   vim.opt.signcolumn = 'no'
+  vim.o.autowriteall = true
 end

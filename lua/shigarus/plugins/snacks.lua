@@ -21,7 +21,7 @@ return {
     input = { enabled = true },
     -- conflicts with noice
     notifier = {
-      enabled = true,
+      enabled = vim.env.IS_NOTES == nil,
       filter = function(notif)
         local to_filter = { 'lines' }
         for _, l in pairs(to_filter) do
