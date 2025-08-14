@@ -87,18 +87,18 @@ return {
           path = 'yaml-language-server',
         },
       },
-      -- harper_ls = {
-      --   settings = {
-      --     ['harper-ls'] = {
-      --       userDictPath = '~/.config/harper-ls/dictionary.txt',
-      --       fileDictPath = '~/.config/harper-ls',
-      --       linters = {
-      --         sentence_capitalization = false,
-      --         avoid_curses = false,
-      --       },
-      --     },
-      --   },
-      -- },
+      harper_ls = {
+        settings = {
+          ['harper-ls'] = {
+            userDictPath = '~/.config/harper-ls/dictionary.txt',
+            fileDictPath = '~/.config/harper-ls',
+            linters = {
+              sentence_capitalization = false,
+              avoid_curses = false,
+            },
+          },
+        },
+      },
       -- rust_analyzer = {},
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
       --

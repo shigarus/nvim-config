@@ -22,6 +22,9 @@ return {
       -- other setups...
     }
     local cfg = require('go.lsp').config()
+    -- defaults do not cover all cases
+    cfg.root_dir = require('lspconfig').gopls.root_dir
+    -- bazel support >_<
     cfg.settings.gopls.usePlaceholders = false
     cfg.settings.gopls.workspaceFiles = {
       '**/BUILD',
@@ -38,6 +41,7 @@ return {
       '-bazel-testlogs',
       '-bazel-mypkg',
     }
+
     vim.lsp.config.gopls = cfg
     vim.lsp.enable 'gopls'
   end,

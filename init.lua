@@ -192,7 +192,7 @@ local log = require 'log'
 log('Started on ' .. os.date())
 
 if vim.env.IS_NOTES == 'true' then
-  vim.opt.laststatus = 0
+  -- vim.opt.laststatus = 0
   vim.opt.number = false
   vim.opt.relativenumber = false
   vim.cmd [[
