@@ -32,14 +32,14 @@ return {
     {
       '<leader>sf',
       function()
-        require('fzf-lua').files { hidden = true, find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden' } }
+        require('fzf-lua').files { hidden = true, find_command = { 'rg', '--files', '--iglob', '!.git', '!bazel-bin/', '!bazel-nebo/', '--hidden' } }
       end,
       desc = '[S]earch [F]iles',
     },
     {
       '<leader>sg',
       function()
-        require('fzf-lua').live_grep_glob()
+        require('fzf-lua').live_grep_glob { cmd = "rg --color=always --smart-case -g '!{.git,node_modules,bazel-bin,bazel-nebo,bazel-out,bazel-testlogs}/'" }
       end,
       desc = '[S]earch [G]rep',
     },
