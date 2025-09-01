@@ -4,4 +4,5 @@ return function()
     vim.keymap.set(mode, keys, func, { desc = desc })
   end
   map('<leader>w', ':w<CR>', '[w]rite current buffer')
+  map('<leader>q', ':q<CR>', '[q]uit')
 end
