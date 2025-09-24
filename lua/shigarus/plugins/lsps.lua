@@ -80,7 +80,7 @@ return {
     local servers = {
       -- clangd = {},
       -- gopls = {},
-      bzl = {},
+      -- bzl = {},
       pyright = {},
       helm_ls = {
         yamlls = {

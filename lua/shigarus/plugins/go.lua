@@ -25,22 +25,22 @@ return {
     -- defaults do not cover all cases
     cfg.root_dir = require('lspconfig').gopls.root_dir
     -- bazel support >_<
-    cfg.settings.gopls.usePlaceholders = false
-    cfg.settings.gopls.workspaceFiles = {
-      '**/BUILD',
-      '**/WORKSPACE',
-      '**/*.{bzl,bazel}',
-    }
-
-    cfg.settings.gopls.env = {
-      GOPACKAGESDRIVER = vim.env.NEBO .. '/nebazel/tools/gopackagesdriver.sh',
-    }
-    cfg.settings.gopls.directoryFilters = {
-      '-bazel-bin',
-      '-bazel-out',
-      '-bazel-testlogs',
-      '-bazel-mypkg',
-    }
+    -- cfg.settings.gopls.usePlaceholders = false
+    -- cfg.settings.gopls.workspaceFiles = {
+    --   '**/BUILD',
+    --   '**/WORKSPACE',
+    --   '**/*.{bzl,bazel}',
+    -- }
+    --
+    -- cfg.settings.gopls.env = {
+    --   GOPACKAGESDRIVER = vim.env.NEBO .. '/nebazel/tools/gopackagesdriver.sh',
+    -- }
+    -- cfg.settings.gopls.directoryFilters = {
+    --   '-bazel-bin',
+    --   '-bazel-out',
+    --   '-bazel-testlogs',
+    --   '-bazel-mypkg',
+    -- }
 
     vim.lsp.config.gopls = cfg
     vim.lsp.enable 'gopls'
