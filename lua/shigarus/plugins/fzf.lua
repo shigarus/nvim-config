@@ -39,7 +39,9 @@ return {
     {
       '<leader>sg',
       function()
-        require('fzf-lua').live_grep_glob { cmd = "rg --color=always --smart-case -g '!{.git,node_modules,bazel-bin,bazel-nebo,bazel-out,bazel-testlogs}/'" }
+        require('fzf-lua').live_grep_glob {
+          cmd = "rg --color=always --smart-case -g '!{.git,node_modules,bazel-bin,bazel-nebo,bazel-out,bazel-testlogs}/' --line-number|-n --column",
+        }
       end,
       desc = '[S]earch [G]rep',
     },
