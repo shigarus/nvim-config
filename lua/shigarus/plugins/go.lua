@@ -24,8 +24,8 @@ return {
     local cfg = require('go.lsp').config()
     -- defaults do not cover all cases
     cfg.root_dir = require('lspconfig').gopls.root_dir
+    cfg.settings.gopls.usePlaceholders = false
     -- bazel support >_<
-    -- cfg.settings.gopls.usePlaceholders = false
     -- cfg.settings.gopls.workspaceFiles = {
     --   '**/BUILD',
     --   '**/WORKSPACE',
