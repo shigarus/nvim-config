@@ -182,6 +182,11 @@ vim.keymap.set({ 'n' }, '-', '<cmd>Oil<CR>')
 require 'shigarus.keymaps.markdown'()
 require 'shigarus.keymaps.life_quality'()
 
+local terminal_module = require 'shigarus.keymaps.terminal'
+-- these are the same keybind
+vim.keymap.set({ 'n', 'v', 's', 'o', 't' }, '†', terminal_module.ToggleTerminal)
+vim.keymap.set({ 'n', 'v', 's', 'o', 't' }, '<A-t>', terminal_module.ToggleTerminal)
+
 vim.defer_fn(function()
   -- here are some settings that better to setup a bit after startup
   -- but have no idea how to make them lazy without such hack
