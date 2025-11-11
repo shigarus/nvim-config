@@ -186,6 +186,8 @@ local terminal_module = require 'shigarus.keymaps.terminal'
 -- these are the same keybind
 vim.keymap.set({ 'n', 'v', 's', 'o', 't' }, '†', terminal_module.ToggleTerminal)
 vim.keymap.set({ 'n', 'v', 's', 'o', 't' }, '<A-t>', terminal_module.ToggleTerminal)
+vim.keymap.set({ 't' }, '<ESC>', '<C-\\><C-n>')
+vim.keymap.set({ 't' }, '<C-ESC>', '<ESC>')
 
 vim.defer_fn(function()
   -- here are some settings that better to setup a bit after startup

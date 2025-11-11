@@ -18,7 +18,6 @@ local function ToggleTerminal()
   if termBufID then
     vim.cmd('b' .. termBufID)
   else
-    print 'creating terminal'
     termBufID = vim.api.nvim_create_buf(true, false)
     vim.api.nvim_buf_attach(termBufID, false, {})
     vim.cmd 'term'
