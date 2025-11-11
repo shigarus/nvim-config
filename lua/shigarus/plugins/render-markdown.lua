@@ -11,6 +11,7 @@ return {
   },
   event = { 'BufEnter *.md' },
   config = function()
-    vim.cmd 'highlight RenderMarkdownCode guibg=none'
+    vim.cmd 'highlight RenderMarkdownCode guibg=#2C2A2E guifg=#7AD9E5'
+    vim.cmd 'highlight @markup.raw.block.markdown guibg=#2C2A2E'
   end,
 }
