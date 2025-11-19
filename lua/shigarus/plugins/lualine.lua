@@ -1,5 +1,19 @@
 -- local custom_monokai = require 'lualine.themes.monokai'
 -- custom_monokai.normal.c.bg = '#272822'
+
+Tmux_session_name = ''
+local function update_tmux_session_name()
+  local f = assert(io.popen "tmux display-message -p '#S'")
+  Tmux_session_name = f:read()
+end
+
+local function contiuous_upd()
+  update_tmux_session_name()
+  vim.defer_fn(contiuous_upd, 1000)
+end
+
+vim.defer_fn(contiuous_upd, 0)
+
 return {
   'nvim-lualine/lualine.nvim',
   enabled = vim.env.IS_NOTES == nil,
@@ -37,6 +51,12 @@ return {
       options = { theme = theme },
       extensions = { 'fzf', 'oil', 'quickfix' },
       sections = {
+        lualine_a = {
+          function()
+            return Tmux_session_name
+          end,
+          'mode',
+        },
         lualine_b = { 'branch', 'diff' },
         lualine_c = {
           {
