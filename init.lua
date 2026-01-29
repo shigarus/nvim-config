@@ -99,11 +99,6 @@ vim.keymap.set({ 'n', 'x' }, 's', '<Nop>')
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
--- Show tooltips as fload
-vim.keymap.set('n', '<leader>fe', function()
-  vim.diagnostic.open_float()
-end, { desc = 'Open error as float buffer' })
-
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 -- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
@@ -176,7 +171,6 @@ require('lazy').setup({
 
 require('lspconfig').protols.setup {}
 require('lspconfig').fish_lsp.setup {}
-vim.diagnostic.config { virtual_lines = { current_line = true } }
 
 vim.keymap.set({ 'n' }, '-', '<cmd>Oil<CR>')
 require 'shigarus.keymaps.markdown'()
