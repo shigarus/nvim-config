@@ -32,9 +32,9 @@ return {
     --   '**/*.{bzl,bazel}',
     -- }
     --
-    -- cfg.settings.gopls.env = {
-    --   GOPACKAGESDRIVER = vim.env.NEBO .. '/nebazel/tools/gopackagesdriver.sh',
-    -- }
+    cfg.settings.gopls.env = {
+      GOPACKAGESDRIVER = '',
+    }
     -- cfg.settings.gopls.directoryFilters = {
     --   '-bazel-bin',
     --   '-bazel-out',
