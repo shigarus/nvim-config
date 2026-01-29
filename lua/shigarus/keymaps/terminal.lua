@@ -1,6 +1,8 @@
 local function findBufferID()
   for _, v in pairs(vim.api.nvim_list_bufs()) do
-    if vim.startswith(vim.api.nvim_buf_get_name(v), 'term://') then
+    bufname = vim.api.nvim_buf_get_name(v)
+    -- /bin/sh means some plugin opened terminal window for its work (for example fzf-lua)
+    if vim.startswith(bufname, 'term://') and not vim.endswith(bufname, '/bin/sh') then
       return v
     end
   end
