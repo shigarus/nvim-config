@@ -17,4 +17,10 @@ return function()
     end
     vim.diagnostic.config { virtual_lines = to_set }
   end, { desc = 'Toggle tooltips on separate line' })
+
+  function insertFullPath()
+    local filepath = vim.fn.expand '%'
+    vim.fn.setreg('+', filepath)
+  end
+  vim.keymap.set('n', '<leader>pc', insertFullPath, { noremap = true, silent = true })
 end
