@@ -65,12 +65,12 @@ return {
       end,
       desc = 'Git Browse (copy)',
     },
-    {
-      '<leader>gg',
-      function()
-        Snacks.lazygit()
-      end,
-      desc = 'Lazygit',
-    },
+    -- {
+    --   '<leader>gg',
+    --   function()
+    --     Snacks.lazygit()
+    --   end,
+    --   desc = 'Lazygit',
+    -- },
   },
 }
