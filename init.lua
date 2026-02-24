@@ -78,6 +78,8 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 20
+-- remove tildas from empty lines
+vim.opt.fillchars = { eob = ' ' }
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -98,6 +100,19 @@ vim.keymap.set({ 'n', 'x' }, 's', '<Nop>')
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('t', '<A-Esc>', '<Esc>', { desc = 'Send Esc to app in terminal' })
+
+-- Keep terminal output as one logical line per command output line.
+-- Wrapped display lines can turn into newline-separated text when copied with mouse/visual selection.
+vim.api.nvim_create_autocmd('TermOpen', {
+  desc = 'Terminal window local options',
+  group = vim.api.nvim_create_augroup('shigarus-terminal-window', { clear = true }),
+  callback = function()
+    vim.opt_local.wrap = false
+    vim.opt_local.linebreak = false
+    vim.opt_local.breakindent = false
+  end,
+})
 
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')

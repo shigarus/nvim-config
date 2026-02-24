@@ -48,7 +48,8 @@ return {
       },
     }
     lualine.setup {
-      options = { theme = theme },
+      -- options = { theme = theme },
+      options = { theme = 'everforest' },
       extensions = { 'fzf', 'oil', 'quickfix' },
       sections = {
         lualine_a = {
