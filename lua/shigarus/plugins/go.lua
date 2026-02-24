@@ -19,6 +19,16 @@ return {
       lsp_cfg = false,
       -- this is probably not working bs, as I run this function as autocommand in lsp config
       lsp_keymaps = require 'shigarus.keymaps.lsp_attach',
+      diagnostic = {
+        hdlr = false,
+        underline = true,
+        virtual_text = false,
+        update_in_insert = false,
+        signs = true,
+      },
+      lsp_inlay_hints = {
+        enable = false,
+      },
       -- other setups...
     }
     local cfg = require('go.lsp').config()
