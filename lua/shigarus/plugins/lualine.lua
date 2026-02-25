@@ -3,8 +3,23 @@
 
 Tmux_session_name = ''
 local function update_tmux_session_name()
-  local f = assert(io.popen "tmux display-message -p '#S'")
-  Tmux_session_name = f:read()
+  local p = io.popen 'tmux ls'
+  if not p then
+    return
+  end
+  local ctr = 0
+  local found_name = ''
+  for l in p:lines() do
+    ctr = ctr + 1
+    if l:match '(attached)' then
+      found_name = l:match '^(%w+):'
+    end
+  end
+  if ctr > 1 then
+    Tmux_session_name = found_name
+  else
+    Tmux_session_name = ''
+  end
 end
 
 local function contiuous_upd()
