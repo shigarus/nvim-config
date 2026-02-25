@@ -14,6 +14,48 @@ end
 
 vim.defer_fn(contiuous_upd, 0)
 
+local function tmux_windows()
+  local function trim(s)
+    return (s:gsub('^%s+', ''):gsub('%s+$', ''))
+  end
+
+  -- Ensure we are inside tmux
+  do
+    local p = io.popen "tmux display-message -p '#{session_id}' 2>/dev/null"
+    if not p then
+      return ''
+    end
+    local sid = p:read '*a'
+    p:close()
+    if trim(sid) == '' then
+      return ''
+    end
+  end
+
+  local p = io.popen "tmux list-windows -F '#I #W #{window_active}'"
+  if not p then
+    return ''
+  end
+
+  local parts = {}
+  for line in p:lines() do
+    local idx, name, active = line:match '^(%S+)%s+(.+)%s+(%d+)$'
+    if idx and name and active then
+      local item = idx .. ' ' .. name
+      if active == '1' then
+        item = '❱ ' .. item .. ' ❰'
+      end
+      table.insert(parts, item)
+    end
+  end
+  p:close()
+  if #parts < 2 then
+    return ''
+  end
+
+  return table.concat(parts, ' ')
+end
+
 return {
   'nvim-lualine/lualine.nvim',
   enabled = vim.env.IS_NOTES == nil,
@@ -21,35 +63,57 @@ return {
   config = function()
     local lualine = require 'lualine'
     local colors = {
-      black = '#2C2A2E',
-      gray = '#403E41',
-      white = '#F6F6F5',
-      green = '#A6CA7B',
-
-      orange = '#EE9D70',
-      purple = '#A69BE8',
-      red = '#EB6B88',
-      yellow = '#F9D978',
+      bg0 = '#323d43',
+      bg1 = '#1f2326',
+      bg3 = '#505a60',
+      fg = '#d8caac',
+      aqua = '#87c095',
+      green = '#a7c080',
+      orange = '#e39b7b',
+      purple = '#d39bb6',
+      red = '#e68183',
+      grey1 = '#868d80',
     }
 
     local theme = {
       normal = {
-        a = { fg = colors.black, bg = colors.yellow, gui = 'bold' },
-        b = { fg = colors.yellow, bg = colors.gray },
-        c = { fg = colors.white, bg = colors.black },
+        a = { bg = colors.green, fg = colors.bg0, gui = 'bold' },
+        b = { bg = colors.bg3, fg = colors.fg },
+        c = { bg = colors.bg1, fg = colors.fg },
       },
-      insert = { a = { fg = colors.black, bg = colors.green, gui = 'bold' } },
-      visual = { a = { fg = colors.black, bg = colors.purple, gui = 'bold' } },
-      replace = { a = { fg = colors.black, bg = colors.red, gui = 'bold' } },
+      insert = {
+        a = { bg = colors.fg, fg = colors.bg0, gui = 'bold' },
+        b = { bg = colors.bg3, fg = colors.fg },
+        c = { bg = colors.bg1, fg = colors.fg },
+      },
+      visual = {
+        a = { bg = colors.red, fg = colors.bg0, gui = 'bold' },
+        b = { bg = colors.bg3, fg = colors.fg },
+        c = { bg = colors.bg1, fg = colors.fg },
+      },
+      replace = {
+        a = { bg = colors.orange, fg = colors.bg0, gui = 'bold' },
+        b = { bg = colors.bg3, fg = colors.fg },
+        c = { bg = colors.bg1, fg = colors.fg },
+      },
+      command = {
+        a = { bg = colors.aqua, fg = colors.bg0, gui = 'bold' },
+        b = { bg = colors.bg3, fg = colors.fg },
+        c = { bg = colors.bg1, fg = colors.fg },
+      },
+      terminal = {
+        a = { bg = colors.purple, fg = colors.bg0, gui = 'bold' },
+        b = { bg = colors.bg3, fg = colors.fg },
+        c = { bg = colors.bg1, fg = colors.fg },
+      },
       inactive = {
-        a = { fg = colors.black, bg = colors.yellow, gui = 'bold' },
-        b = { fg = colors.black, bg = colors.yellow },
-        c = { fg = colors.white, bg = colors.black },
+        a = { bg = colors.bg1, fg = colors.grey1, gui = 'bold' },
+        b = { bg = colors.bg1, fg = colors.grey1 },
+        c = { bg = colors.bg1, fg = colors.grey1 },
       },
     }
     lualine.setup {
-      -- options = { theme = theme },
-      options = { theme = 'everforest' },
+      options = { theme = theme },
       extensions = { 'fzf', 'oil', 'quickfix' },
       sections = {
         lualine_a = {
@@ -66,7 +130,7 @@ return {
           },
         },
         lualine_x = { 'diagnostics' },
-        lualine_y = { 'lsp_status' },
+        lualine_y = { tmux_windows },
       },
     }
   end,
