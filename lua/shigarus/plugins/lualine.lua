@@ -15,6 +15,7 @@ local function update_tmux_session_name()
       found_name = l:match '^(%w+):'
     end
   end
+  p:close()
   if ctr > 1 then
     Tmux_session_name = found_name
   else
