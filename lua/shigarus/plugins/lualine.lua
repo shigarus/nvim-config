@@ -71,6 +71,22 @@ local function tmux_windows()
   return table.concat(parts, ' ')
 end
 
+local oil_lualine_extension = {
+  filetypes = { 'oil' },
+  sections = {
+    lualine_a = {
+      function()
+        local ok, oil = pcall(require, 'oil')
+        if ok then
+          return vim.fn.fnamemodify(oil.get_current_dir(), ':~')
+        end
+        return ''
+      end,
+    },
+    lualine_y = { tmux_windows },
+  },
+}
+
 return {
   'nvim-lualine/lualine.nvim',
   enabled = vim.env.IS_NOTES == nil,
@@ -129,7 +145,7 @@ return {
     }
     lualine.setup {
       options = { theme = theme },
-      extensions = { 'fzf', 'oil', 'quickfix' },
+      extensions = { 'fzf', oil_lualine_extension, 'quickfix' },
       sections = {
         lualine_a = {
           function()
