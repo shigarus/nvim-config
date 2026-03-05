@@ -24,8 +24,17 @@ local function ToggleTerminal()
   end
 end
 
-M = {}
+return function()
+  -- these are the same keybind
+  vim.keymap.set({ 'n', 'v', 's', 'o', 't' }, '†', ToggleTerminal)
+  vim.keymap.set({ 'n', 'v', 's', 'o', 't' }, '<A-t>', ToggleTerminal)
+  vim.keymap.set({ 'n', 'v', 's', 'o', 't' }, '∫', function()
+    require('fzf-lua').buffers()
+  end)
+  vim.keymap.set({ 'n', 'v', 's', 'o', 't' }, '<A-b>', function()
+    require('fzf-lua').buffers()
+  end)
 
-M.ToggleTerminal = ToggleTerminal
-
-return M
+  vim.keymap.set({ 't' }, '<ESC>', '<C-\\><C-n>')
+  vim.keymap.set({ 't' }, '<C-ESC>', '<ESC>')
+end
