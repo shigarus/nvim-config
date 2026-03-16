@@ -12,7 +12,7 @@ local function update_tmux_session_name()
   for l in p:lines() do
     ctr = ctr + 1
     if l:match '(attached)' then
-      found_name = l:match '^(%w+):'
+      found_name = l:match '^([^:]+):'
     end
   end
   p:close()
