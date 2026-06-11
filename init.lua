@@ -184,8 +184,8 @@ require('lazy').setup({
   },
 })
 
-require('lspconfig').protols.setup {}
-require('lspconfig').fish_lsp.setup {}
+vim.lsp.config('protols', {})
+vim.lsp.config('fish_lsp', {})
 
 vim.keymap.set({ 'n' }, '-', '<cmd>Oil<CR>')
 require 'shigarus.keymaps.markdown'()

@@ -23,7 +23,8 @@ return {
     notifier = {
       enabled = vim.env.IS_NOTES == nil,
       filter = function(notif)
-        local to_filter = { 'lines' }
+        -- local to_filter = { 'lines' }
+        local to_filter = {}
         for _, l in pairs(to_filter) do
           if notif.msg:find(l) then
             return false

@@ -16,6 +16,29 @@ return { -- Highlight, edit, and navigate code
     },
     indent = { enable = true, disable = { 'ruby' } },
   },
+  config = function(_, opts)
+    require('nvim-treesitter.configs').setup(opts)
+
+    vim.treesitter.query.add_directive('set-lang-from-info-string!', function(match, _, bufnr, pred, metadata)
+      local node = match[pred[2]]
+      if type(node) == 'table' then
+        node = node[1]
+      end
+      if not node then
+        return
+      end
+
+      local lang = vim.treesitter.get_node_text(node, bufnr):lower()
+      local aliases = {
+        ex = 'elixir',
+        pl = 'perl',
+        sh = 'bash',
+        ts = 'typescript',
+        uxn = 'uxntal',
+      }
+      metadata['injection.language'] = vim.filetype.match { filename = 'a.' .. lang } or aliases[lang] or lang
+    end, { force = true, all = false })
+  end,
   -- There are additional nvim-treesitter modules that you can use to interact
   -- with nvim-treesitter. You should go explore a few and see what interests you:
   --

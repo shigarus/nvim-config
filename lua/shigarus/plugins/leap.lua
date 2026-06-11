@@ -1,5 +1,5 @@
 return {
-  'ggandor/leap.nvim',
+  url = 'https://git.disroot.org/andyg/leap.nvim',
   enabled = true,
   config = function(_, opts)
     local leap = require 'leap'

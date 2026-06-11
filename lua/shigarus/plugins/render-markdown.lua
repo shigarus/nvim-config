@@ -10,7 +10,8 @@ return {
     completions = { blink = { enabled = true } },
   },
   event = { 'BufEnter *.md' },
-  config = function()
+  config = function(_, opts)
+    require('render-markdown').setup(opts)
     vim.cmd 'highlight RenderMarkdownCode guibg=#2C2A2E guifg=#7AD9E5'
     vim.cmd 'highlight @markup.raw.block.markdown guibg=#2C2A2E'
   end,
